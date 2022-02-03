@@ -1,0 +1,35 @@
+C.Perform testing of hypothesis using MANOVA.
+MANOVA is the acronym for Multivariate Analysis of Variance. When analyzing data,
+we may encounter situations where we have there multiple response variables
+(dependent variables). In MANOVA there also some assumptions, like ANOVA. Before
+performing MANOVA we have to check the following assumptions are satisfied or not.
+• The samples, while drawing, should be independent of each other.
+• The dependent variables are continuous in nature and the independent variables
+are categorical.
+• The dependent variables should follow a multivariate normal distribution.
+• The population variance-covariance matrices of each group are same, i.e. groups
+are homogeneous.
+Code:
+import pandas as pd
+fromstatsmodels.multivariate.manova import MANOVA
+df = pd.read_csv('iris.csv', index_col=0)
+df.columns = df.columns.str.replace(".", "_")
+df.head()
+print('~~~~~~~~ Data Set ~~~~~~~~')
+print(df)
+maov = MANOVA.from_formula('Sepal_Length + Sepal_Width + \
+Petal_Length + Petal_Width ~ Species', data=df)
+print('~~~~~~~~ MANOVA Test Result ~~~~~~~~')
+print(maov.mv_test())
+Output:
+PSIT1P1~~~~~ Research in Computing Practical
+M. Sc. [Information Technology] SEMESTER ~ I Teacher’s Reference Manual
+40
+Excel:
+Go to http://www.real-statistics.com/free-download/
+1. Download Real Statistics Resource Pack
+Or
+http://www.real-statistics.com/wp-content/uploads/2019/11/XRealStats.xlam
+Install Add-in in excel. Select File > Help|Options > Add-Ins and click on the Go button at the
+bottom of the window (see Figure 1).
+Add-ins -> Analysis Pack -> Go 
